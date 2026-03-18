@@ -1,0 +1,35 @@
+{
+  "manifest_version": "0.2",
+  "name": "webradio-plugin",
+  "display_name": "Web Radio",
+  "version": "1.0.0",
+  "description": "Search and discover internet radio stations worldwide via the free Radio Browser API.",
+  "long_description": "Search over 30,000 internet radio stations by name, country, or genre. Get stream URLs, station details, and top stations by popularity. Uses the free, open-source Radio Browser API — no API key required.",
+  "author": {
+    "name": "Project Fusion"
+  },
+  "license": "MIT",
+  "keywords": ["radio", "streaming", "music", "internet-radio", "radio-browser"],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/server.js"]
+    }
+  },
+  "tools": [
+    {
+      "name": "radio_search",
+      "description": "Search radio stations by name, country, or genre tag"
+    },
+    {
+      "name": "radio_get_station",
+      "description": "Get station details and stream URL by UUID"
+    },
+    {
+      "name": "radio_top_stations",
+      "description": "Get the most popular radio stations worldwide"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "webradio-plugin",
+  "version": "1.0.0",
+  "description": "MCP server for Radio Browser API — search and discover internet radio stations worldwide",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "webradio-plugin": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "radio",
+    "radio-browser",
+    "internet-radio",
+    "streaming"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
