@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "webradio-plugin",
   "display_name": "Web Radio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Search and discover internet radio stations worldwide via the free Radio Browser API.",
   "long_description": "Search over 30,000 internet radio stations by name, country, or genre. Get stream URLs, station details, and top stations by popularity. Uses the free, open-source Radio Browser API — no API key required.",
   "author": {

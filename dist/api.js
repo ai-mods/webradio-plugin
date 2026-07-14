@@ -4,7 +4,7 @@
  * @see https://de1.api.radio-browser.info/
  */
 const RADIO_API = process.env['RADIO_BROWSER_API_URL'] || 'https://de1.api.radio-browser.info';
-const USER_AGENT = 'radio-browser-mcp/1.0';
+const USER_AGENT = 'webradio-plugin/1.0';
 /**
  * Search radio stations by name, country, or tag.
  * Combines filters via Radio Browser advanced search endpoint.

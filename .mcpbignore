@@ -1,5 +1,4 @@
 src/
-node-modules/
 node_modules/typescript/
 node_modules/tsx/
 node_modules/@types/

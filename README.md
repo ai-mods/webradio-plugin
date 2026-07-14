@@ -22,7 +22,7 @@ Search results include clickable stream URLs — click a link to start listening
 
 ### Claude Desktop (Extension)
 
-Install `webradio-plugin-1.0.0.mcpb` via double-click, or add to config manually:
+Install `webradio-plugin.mcpb` from the [latest release](https://github.com/ai-mods/webradio-plugin/releases/latest) via double-click, or add to config manually:
 
 ```json
 {

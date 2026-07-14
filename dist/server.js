@@ -24,7 +24,7 @@ function formatStations(stations) {
 }
 const server = new McpServer({
     name: 'webradio-plugin',
-    version: '1.0.0',
+    version: '1.0.1',
 });
 // ---------------------------------------------------------------------------
 // Tool: radio_search
