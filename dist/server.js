@@ -14,13 +14,17 @@ import { searchStations, getStationByUUID, getTopStations } from './api.js';
 function formatStations(stations) {
     if (stations.length === 0)
         return 'No stations found.';
-    return stations
+    const list = stations
         .map((s, i) => `${i + 1}. **${s.name}** — ${s.country || 'Unknown'}` +
         `${s.tags ? ` | ${s.tags.split(',').slice(0, 3).join(', ')}` : ''}` +
-        ` | ${s.bitrate}kbps` +
+        // Bitrate 0 is a metadata gap in the Radio Browser crawler (common for AAC), not a broken stream.
+        ` | ${s.bitrate ? `${s.bitrate}kbps` : 'bitrate unknown'}` +
         `\n   Stream: ${s.url_resolved}` +
         `\n   UUID: ${s.stationuuid}`)
         .join('\n\n');
+    return stations.some(s => s.url_resolved.startsWith('http://'))
+        ? `${list}\n\nNote: http:// streams may be blocked by browsers when opened from https pages.`
+        : list;
 }
 const server = new McpServer({
     name: 'webradio-plugin',
@@ -116,12 +120,16 @@ server.registerTool('radio_get_station', {
             `Name: ${station.name}`,
             `Country: ${station.country || 'Unknown'}`,
             `Tags: ${station.tags || 'none'}`,
-            `Codec: ${station.codec} | Bitrate: ${station.bitrate}kbps`,
+            // Bitrate 0 is a metadata gap in the Radio Browser crawler (common for AAC), not a broken stream.
+            `Codec: ${station.codec} | Bitrate: ${station.bitrate ? `${station.bitrate}kbps` : 'unknown'}`,
             `Stream URL: ${station.url_resolved}`,
             `Votes: ${station.votes} | Clicks: ${station.clickcount}`,
             `UUID: ${station.stationuuid}`,
-        ].join('\n');
-        return { content: [{ type: 'text', text: info }] };
+        ];
+        if (station.url_resolved.startsWith('http://')) {
+            info.push('Note: http:// streams may be blocked by browsers when opened from https pages.');
+        }
+        return { content: [{ type: 'text', text: info.join('\n') }] };
     }
     catch (error) {
         return {
